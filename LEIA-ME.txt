@@ -1,0 +1,21 @@
+FIXTRACK - PROJETO CORRIGIDO
+
+1) Abra o terminal dentro desta pasta.
+2) Execute: npm install
+3) Execute: node server.js
+4) Abra no navegador: http://localhost:3000
+
+O painel web agora é servido pelo próprio server.js.
+O JavaScript do painel foi reconstruído em js/script.js e o CSS foi colocado em css/style.css.
+
+BOT DO TELEGRAM (opcional):
+Antes de executar o bot, defina a variável TELEGRAM_BOT_TOKEN com o token do seu bot.
+Exemplo no PowerShell:
+$env:TELEGRAM_BOT_TOKEN="SEU_TOKEN_AQUI"
+node bot.js
+
+ESP32:
+A API continua disponível em:
+http://SEU_IP:3000/api/status-sala/LAB-01
+
+Se o ESP32 estiver em outra rede, use o IP do computador que esteja acessível pela mesma rede do ESP32.
