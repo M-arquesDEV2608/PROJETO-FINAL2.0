@@ -3,8 +3,30 @@ const TelegramBot = TelegramBotModule.default || TelegramBotModule;
 const axios = require('axios');
 
 // Cole o token gerado pelo BotFather aqui
-const TOKEN = '8949203841:AAHKLIJ6S9jXQVa705FM1qknvlqJGvopLCl';
-const bot = new TelegramBot(TOKEN, { polling: true });
+const TOKEN = '8879513651:AAFMrrgvn5bPzOqHN1xQ6E9SOdNxGGajBEY';
+
+const bot = new TelegramBot(TOKEN, { polling: false });
+
+bot.on('polling_error', (error) => {
+    console.log('ERRO DO TELEGRAM:', error.message);
+});
+
+bot.on('message', (msg) => {
+    console.log('MENSAGEM RECEBIDA:', msg.text);
+});
+
+bot.getMe()
+    .then((me) => {
+        console.log('BOT CONECTADO:', me.username);
+        return bot.deleteWebHook();
+    })
+    .then(() => {
+        bot.startPolling();
+        console.log('POLLING INICIADO - aguardando mensagens...');
+    })
+    .catch((error) => {
+        console.log('ERRO AO CONECTAR BOT:', error.message);
+    });
 
 // Armazena temporariamente o estado da conversa por usuário
 const usuarioEstado = {};
